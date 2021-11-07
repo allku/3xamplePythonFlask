@@ -25,6 +25,13 @@ grant all privileges on database epythonflask to jorgeluis;
 ```
 alter user jorgeluis with encrypted password 'j';
 ```
+### Create virualenv
+```
+virtualenv venv
+```
+```
+. ./venv/bin/activate
+```
 ### Install dependencies
 ```
 pip install -r requirements.txt
