@@ -1,8 +1,17 @@
-# 3xamplePythonFlask
-Basic example project in Python with Flask 2 and SQLAlchemy
+# Example Python Flask
+Basic example project in Python with Flask 2 and SQLAlchemy. 
+Include:
+* Master detail tables and models
+* Migrate models to database
+* Database seeder or data loader
+* API rest services
+* CRUD api rest
+* Nested json
+* Routes
+* Body parameters validation
 
 ## Software
-* Python 3.9 
+* Python 3.9 or above
 * Postgres 13 or above
 
 ### Create database on GNU/Linux and MacOS with Postgres.app
@@ -25,12 +34,19 @@ grant all privileges on database epythonflask to jorgeluis;
 ```
 alter user jorgeluis with encrypted password 'j';
 ```
-### Create virualenv
+### Create virualenv (bash, zsh, ...)
 ```
 virtualenv venv
 ```
 ```
 . ./venv/bin/activate
+```
+### Create virualenv (cmd)
+```
+virtualenv venv
+```
+```
+.\venv\Scripts\activate
 ```
 ### Install dependencies
 ```
@@ -118,7 +134,7 @@ http PUT http://localhost:5000/example/rest/v1/beer/3 <<< '{
     "brand": "Other",
     "dateReleased": "2001-01-01",
     "name": "Cusqueñita",
-    "origin": "Perú - Ecuador"
+    "origin": "Perú;Ecuador"
 }'
 ```
 ### DELETE
