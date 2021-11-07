@@ -25,6 +25,9 @@ class Beer(db.Model):
         return '<id {}>'.format(self.id)
 
     def serialize(self):
+        """
+            Extract ingredients detail
+        """
         ingredients_data = []
         for i in self.ingredients.all():
             i_data = {}

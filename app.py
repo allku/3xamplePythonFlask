@@ -31,11 +31,18 @@ from seeders.beerseed import BeerSeed
 
 @app.cli.command("seed")
 def create_beers():
+    """
+        Define seed command, run in terminal:
+        $ flask seed
+    """
     BeerSeed.create()
 
 
 @app.errorhandler(404)
 def invalid_route(e):
+    """
+        Define custom 404 in json when not exist route
+    """
     return jsonify({
         'errorCode': 404,
         'message': 'Route not found'

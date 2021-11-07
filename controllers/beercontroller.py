@@ -9,6 +9,10 @@ from validators.beerschema import beer_schema
 
 class BeersController(Resource):
     def get(self):
+        """
+            Get all beers
+            :return: json array
+        """
         try:
             beers = Beer.query.all()
             print(beers)
@@ -19,6 +23,10 @@ class BeersController(Resource):
 
 class BeerController(Resource):
     def post(self):
+        """
+            Save a new beer with ingredients detail from body parameters
+            :return: json object
+        """
         try:
             data = request.get_json()
             # Validate body parameters
@@ -26,8 +34,8 @@ class BeerController(Resource):
             print(errors)
             if errors:
                 return {
-                    'message': str(errors)
-                }, 500
+                           'message': str(errors)
+                       }, 500
 
             name = data['name']
             brand = data['brand']
@@ -35,7 +43,7 @@ class BeerController(Resource):
             date_released = data['dateReleased']
 
             beer = Beer(name, brand, origin, date_released)
-
+            # Extract ingredients detail from data
             for i in data['ingredients']:
                 beer.ingredients.append(Ingredient(i['name']))
 
@@ -46,20 +54,17 @@ class BeerController(Resource):
 
             return jsonify(beer_one.serialize())
 
-            # return {
-            #     'id': beer.id,
-            #     'name': beer.name,
-            #     'brand': beer.brand,
-            #     'origin': beer.origin,
-            #     'dateReleased': beer.date_released.strftime('%Y-%m-%d')
-            # }
-
         except Exception as e:
             return str(e), 501
 
 
 class BeerControllerById(Resource):
     def get(self, id):
+        """
+            Get one beer
+            :param id: id of beer
+            :return: json object
+        """
         try:
             beer = Beer.query.filter_by(id=id).first()
 
@@ -71,6 +76,11 @@ class BeerControllerById(Resource):
             return str(e), 501
 
     def put(self, id):
+        """
+            Update a beer without ingredients detail from body parameters
+            :param id: id of beer
+            :return: json object
+        """
         try:
             beer = Beer.query.filter_by(id=id).first()
 
@@ -96,6 +106,11 @@ class BeerControllerById(Resource):
             return str(e), 501
 
     def delete(self, id):
+        """
+            Delete a beer
+            :param id: id of beer
+            :return: json object
+        """
         try:
             beer = Beer.query.filter_by(id=id).first()
 

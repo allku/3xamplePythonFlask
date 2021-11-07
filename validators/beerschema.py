@@ -2,6 +2,9 @@ from marshmallow import fields, Schema
 
 
 class BeerSchema(Schema):
+    """
+        Definition to validate beer body parameters
+    """
     name = fields.Str(
         required=True,
         error_messages={"required": "Name of beer is required"}

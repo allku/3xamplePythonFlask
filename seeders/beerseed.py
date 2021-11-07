@@ -8,6 +8,11 @@ class BeerSeed:
 
     @staticmethod
     def create():
+        """
+            Create a new beer with ingredients
+            Use the command in terminal:
+            $ flask seed
+        """
         now = date.today()
         beer1 = Beer(name='Pilsener',
                      brand='Cerveceria Nacional',
