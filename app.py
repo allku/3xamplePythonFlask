@@ -33,3 +33,7 @@ from seeders.beerseed import BeerSeed
 def create_beers():
     BeerSeed.create()
 
+
+@app.errorhandler(404)
+def invalid_route(e):
+    return jsonify({'errorCode': 404, 'message': 'Route not found'})
