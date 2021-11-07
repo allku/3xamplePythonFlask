@@ -40,7 +40,7 @@ class Beer(db.Model):
             'name': self.name,
             'brand': self.brand,
             'origin': self.origin,
-            'dateReleased': self.date_released.strftime('%Y-%m-%d'),
+            'dateReleased': self.date_released.strftime('%Y-%m-%dT%H:%M:%S'),
             'ingredients': ingredients_data
         }
         return beers_data
