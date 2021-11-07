@@ -36,12 +36,26 @@ virtualenv venv
 ```
 pip install -r requirements.txt
 ```
-### Configuration
+### Configuration (bash, zsh, ...)
 ```
 export FLASK_APP=app
 ```
 ```
 export FLASK_ENV=development
+```
+### Configuration (cmd)
+```
+set FLASK_APP=app
+```
+```
+set FLASK_ENV=development
+```
+### Configuration (Powershell)
+```
+$env:FLASK_APP="app"
+```
+```
+$env:FLASK_ENV="development"
 ```
 ### Migrate database
 ```
