@@ -10,9 +10,8 @@ class Ingredient(db.Model):
     beer_id = db.Column(db.Integer,
             db.ForeignKey('beers.id', ondelete='CASCADE'))
 
-    def __init__(self, name, beer_id):
+    def __init__(self, name):
         self.name = name
-        self.beer_id = beer_id
 
     def __repr__(self):
         return '<id {}>'.format(self.id)

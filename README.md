@@ -36,6 +36,13 @@ virtualenv venv
 ```
 pip install -r requirements.txt
 ```
+### Configuration
+```
+export FLASK_APP=app
+```
+```
+export FLASK_ENV=development
+```
 ### Migrate database
 ```
 flask db init
@@ -51,12 +58,6 @@ flask db upgrade
 flask seed
 ```
 ### Run
-```
-export FLASK_APP=app
-```
-```
-export FLASK_ENV=development
-```
 ```
 flask run
 ```
@@ -74,15 +75,15 @@ Use HTTPie
 https://httpie.io/
 ### GET
 ```
-http http://localhost:5000/rest/v1/beers
+http http://localhost:5000/example/rest/v1/beers
 ```
 ### GET
 ```
-http http://localhost:5000/rest/v1/beer/1
+http http://localhost:5000/example/rest/v1/beer/1
 ```
 ### POST
 ```
-http POST http://localhost:5000/rest/v1/beer <<< '{
+http POST http://localhost:5000/example/rest/v1/beer <<< '{
     "brand": "Anheuser-Busch Inbev",
     "dateReleased": "2000-01-01",
     "ingredients": [
@@ -99,7 +100,7 @@ http POST http://localhost:5000/rest/v1/beer <<< '{
 ```
 ### PUT
 ```
-http PUT http://localhost:5000/rest/v1/beer/3 <<< '{
+http PUT http://localhost:5000/example/rest/v1/beer/3 <<< '{
     "brand": "Other",
     "dateReleased": "2001-01-01",
     "name": "Cusqueñita",
@@ -108,5 +109,5 @@ http PUT http://localhost:5000/rest/v1/beer/3 <<< '{
 ```
 ### DELETE
 ```
-http DELETE http://localhost:5000/rest/v1/beer/3
+http DELETE http://localhost:5000/example/rest/v1/beer/3
 ```

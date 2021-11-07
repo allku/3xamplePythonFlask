@@ -18,11 +18,11 @@ from controllers.index import *
 from controllers.beercontroller import *
 
 api.add_resource(Index, '/')
-# GET all beer
+# GET all beers
 api.add_resource(BeersController, '/example/rest/v1/beers')
-# GET, PUT and DELETE one beer by id
+# # GET, PUT and DELETE one beer by id
 api.add_resource(BeerControllerById, '/example/rest/v1/beer/<int:id>')
-# POST beer (Create beer or new beer)
+# # POST beer (Create beer or new beer)
 api.add_resource(BeerController, '/example/rest/v1/beer')
 
 
@@ -32,3 +32,4 @@ from seeders.beerseed import BeerSeed
 @app.cli.command("seed")
 def create_beers():
     BeerSeed.create()
+
