@@ -4,6 +4,7 @@ from flask import jsonify, request
 from app import db
 from models.beer import Beer
 from models.ingredient import Ingredient
+from validators.beerschema import beer_schema
 
 
 class BeersController(Resource):
@@ -20,7 +21,14 @@ class BeerController(Resource):
     def post(self):
         try:
             data = request.get_json()
-            # Validate is missing
+            # Validate body parameters
+            errors = beer_schema.validate(data)
+            print(errors)
+            if errors:
+                return {
+                    'message': str(errors)
+                }, 500
+
             name = data['name']
             brand = data['brand']
             origin = data['origin']

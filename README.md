@@ -52,10 +52,10 @@ set FLASK_ENV=development
 ```
 ### Configuration (Powershell)
 ```
-$env:FLASK_APP="app"
+$env:FLASK_APP = "app"
 ```
 ```
-$env:FLASK_ENV="development"
+$env:FLASK_ENV = "development"
 ```
 ### Migrate database
 ```

@@ -3,6 +3,7 @@ Flask
 Flask-Migrate
 Flask-SQLAlchemy
 Flask-RESTful
+marshmallow
 
 # Postgres database
 psycopg2-binary
