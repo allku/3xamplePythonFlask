@@ -115,7 +115,7 @@ http http://localhost:5000/example/rest/v1/beer/1
 ```
 http POST http://localhost:5000/example/rest/v1/beer <<< '{
     "brand": "Anheuser-Busch Inbev",
-    "dateReleased": "2000-01-01",
+    "dateReleased": "2000-01-01T13:44:02",
     "ingredients": [
         {
             "name": "Malta"
@@ -132,7 +132,7 @@ http POST http://localhost:5000/example/rest/v1/beer <<< '{
 ```
 http PUT http://localhost:5000/example/rest/v1/beer/3 <<< '{
     "brand": "Other",
-    "dateReleased": "2001-01-01",
+    "dateReleased": "2001-11-06T13:44:02",
     "name": "Cusqueñita",
     "origin": "Perú;Ecuador"
 }'
