@@ -1,0 +1,8 @@
+# Development
+Flask
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-RESTful
+
+# Postgres database
+psycopg2-binary
