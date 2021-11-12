@@ -11,7 +11,7 @@ Include:
 * Body parameters validation
 
 ## Software
-* Python 3.9 or above
+* Python 3.8 or above
 * Postgres 13 or above
 
 ### Create database on GNU/Linux and MacOS with Postgres.app
