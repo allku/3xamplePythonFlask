@@ -27,16 +27,16 @@ api.add_resource(BeerControllerById, '/example/rest/v1/beer/<int:id>')
 api.add_resource(BeerController, '/example/rest/v1/beer')
 
 
-from seeders.beerseed import BeerSeed
+from seeders.dataseed import DataSeed
 
 
 @app.cli.command("seed")
-def create_beers():
+def create_data():
     """
         Define seed command, run in terminal:
         $ flask seed
     """
-    BeerSeed.create()
+    DataSeed.create()
 
 
 @app.errorhandler(404)

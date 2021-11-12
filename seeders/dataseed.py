@@ -5,12 +5,12 @@ from datetime import date
 from app import db
 
 
-class BeerSeed:
+class DataSeed:
 
     @staticmethod
     def create():
         """
-            Create a new beer with ingredients
+            Create a new beer with ingredients, and others datas
             Use the command in terminal:
             $ flask seed
         """
@@ -42,4 +42,4 @@ class BeerSeed:
 
         db.session.add(beer1)
         db.session.commit()
-        print("Seeder end")
+        print("Data seeder end")
