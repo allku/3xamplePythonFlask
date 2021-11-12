@@ -11,6 +11,7 @@ db = SQLAlchemy(app)
 
 from models.beer import *
 from models.ingredient import *
+from models.location import *
 
 migrate = Migrate(app, db)
 

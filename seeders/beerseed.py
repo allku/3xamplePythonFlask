@@ -1,5 +1,6 @@
 from models.beer import Beer
 from models.ingredient import Ingredient
+from models.location import Location
 from datetime import date
 from app import db
 
@@ -13,6 +14,23 @@ class BeerSeed:
             Use the command in terminal:
             $ flask seed
         """
+        country = Location(name='Ecuador',
+                observation=None,
+                status='Activo')
+
+        province = Location(name='Imbabura',
+                observation=None,
+                status='Activo',
+                parent=country)
+
+        city = Location(name='Ibarra',
+                observation=None,
+                status='Activo',
+                parent=province)
+
+
+        db.session.add(country)
+
         now = date.today()
         beer1 = Beer(name='Pilsener',
                      brand='Cerveceria Nacional',
@@ -24,4 +42,4 @@ class BeerSeed:
 
         db.session.add(beer1)
         db.session.commit()
-        print("Beers seeder end")
+        print("Seeder end")
