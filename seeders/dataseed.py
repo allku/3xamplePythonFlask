@@ -30,12 +30,14 @@ class DataSeed:
 
 
         db.session.add(country)
+        db.session.commit()
 
         now = date.today()
         beer1 = Beer(name='Pilsener',
                      brand='Cerveceria Nacional',
                      origin='Ecuador',
-                     date_released=now)
+                     date_released=now,
+                     location_id=city.id)
 
         beer1.ingredients.append(Ingredient(name='Malta'))
         beer1.ingredients.append(Ingredient('Agua'))

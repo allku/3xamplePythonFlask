@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import db
+from sqlalchemy import ForeignKey
 
 
 class Ingredient(db.Model):

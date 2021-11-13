@@ -22,6 +22,10 @@ class Location(db.Model):
             remote_side=id,
             cascade="all, delete"
             )
+    
+    beers = db.relationship('Beer',
+                                  backref='location',
+                                  lazy='dynamic')
 
     def __init__(self, name, observation, status, parent=None):
         self.name = name

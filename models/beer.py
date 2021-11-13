@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import db
+from sqlalchemy import ForeignKey
 
 
 class Beer(db.Model):
@@ -10,16 +11,22 @@ class Beer(db.Model):
     brand = db.Column(db.String, nullable=False)
     origin = db.Column(db.String, nullable=False)
     date_released = db.Column(db.DateTime, nullable=False)
+
+    location_id = db.Column(db.Integer,
+            ForeignKey('locations.id'),
+            nullable=False)
+
     ingredients = db.relationship('Ingredient',
                                   backref='beer',
                                   lazy='dynamic',
                                   cascade="all, delete")
 
-    def __init__(self, name, brand, origin, date_released):
+    def __init__(self, name, brand, origin, date_released, location_id):
         self.name = name
         self.brand = brand
         self.origin = origin
         self.date_released = date_released
+        self.location_id = location_id
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
