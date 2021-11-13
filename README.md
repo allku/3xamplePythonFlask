@@ -83,6 +83,10 @@ flask db migrate
 ```
 flask db upgrade
 ```
+### Create view
+```
+flask view create
+```
 ### Seeder
 ```
 flask seed
@@ -96,6 +100,10 @@ flask run
 flask run --port=5001
 ```
 
+### Drop view
+```
+flask view drop
+```
 ### Drop tables
 ```
 flask db downgrade
