@@ -39,10 +39,10 @@ class BeerController(Resource):
 
             name = data['name']
             brand = data['brand']
-            origin = data['origin']
             date_released = data['dateReleased']
+            location_id = data['locationId']
 
-            beer = Beer(name, brand, origin, date_released)
+            beer = Beer(name, brand, date_released, location_id)
             # Extract ingredients detail from data
             for i in data['ingredients']:
                 beer.ingredients.append(Ingredient(i['name']))
@@ -91,13 +91,13 @@ class BeerControllerById(Resource):
             # Validate is missing
             name = data['name']
             brand = data['brand']
-            origin = data['origin']
             date_released = data['dateReleased']
+            location_id = data['locationId']
 
             beer.name = name
             beer.brand = brand
-            beer.origin = origin
             beer.date_released = date_released
+            beer.location_id = location_id
 
             db.session.commit()
 

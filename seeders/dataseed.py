@@ -43,9 +43,8 @@ class DataSeed:
         db.session.commit()
 
         now = date.today()
-        beer1 = Beer(name='Pilsener',
-                     brand='Cerveceria Nacional',
-                     origin='Ecuador',
+        beer1 = Beer(name='Calenturienta',
+                     brand='Cerveceria de Mi Hogar',
                      date_released=now,
                      location_id=country1.id)
 

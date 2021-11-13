@@ -114,8 +114,8 @@ http http://localhost:5000/example/rest/v1/beer/1
 ### POST
 ```
 http POST http://localhost:5000/example/rest/v1/beer <<< '{
-    "brand": "Anheuser-Busch Inbev",
-    "dateReleased": "2000-01-01T13:44:02",
+    "brand": "Krombach",
+    "dateReleased": "1803-10-11T13:44:02",
     "ingredients": [
         {
             "name": "Malta"
@@ -124,8 +124,8 @@ http POST http://localhost:5000/example/rest/v1/beer <<< '{
             "name": "Agua"
         }
     ],
-    "name": "Cusqueña",
-    "origin": "Perú"
+    "name": "Krombacher",
+    "locationId": 5
 }'
 ```
 ### PUT
@@ -134,7 +134,7 @@ http PUT http://localhost:5000/example/rest/v1/beer/3 <<< '{
     "brand": "Other",
     "dateReleased": "2001-11-06T13:44:02",
     "name": "Cusqueñita",
-    "origin": "Perú;Ecuador"
+    "locationId": 2
 }'
 ```
 ### DELETE

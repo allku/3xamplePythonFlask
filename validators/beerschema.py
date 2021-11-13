@@ -14,11 +14,11 @@ class BeerSchema(Schema):
         required=True,
         error_messages={'required': 'Brand of beer is required'}
     )
-    origin = fields.Str(
+    locationId = fields.Integer(
         required=True,
-        error_messages={'required': 'Country origin of beer is required'}
+        error_messages={'required': 'Location origin of beer is required'}
     )
-    date_released = fields.Str(
+    dateReleased = fields.Str(
         required=True,
         error_messages={'required': 'Date released of beer is required'}
     )
@@ -31,8 +31,8 @@ class BeerSchema(Schema):
     class Meta:
         fields = ('name',
                   'brand',
-                  'origin',
                   'dateReleased',
+                  'locationId',
                   'ingredients')
 
 

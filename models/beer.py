@@ -10,7 +10,6 @@ class Beer(db.Model):
     id = db.Column(db.Integer, db.Identity(start=1), primary_key=True)
     name = db.Column(db.String, nullable=False)
     brand = db.Column(db.String, nullable=False)
-    origin = db.Column(db.String, nullable=False)
     date_released = db.Column(db.DateTime, nullable=False)
 
     location_id = db.Column(db.Integer,
@@ -22,10 +21,9 @@ class Beer(db.Model):
                                   lazy='dynamic',
                                   cascade="all, delete")
 
-    def __init__(self, name, brand, origin, date_released, location_id):
+    def __init__(self, name, brand, date_released, location_id):
         self.name = name
         self.brand = brand
-        self.origin = origin
         self.date_released = date_released
         self.location_id = location_id
 
@@ -52,6 +50,6 @@ class Beer(db.Model):
             'location': location_beer.location,
             'dateReleased': self.date_released.strftime('%Y-%m-%dT%H:%M:%S'),
             'ingredients': ingredients_data,
-            'location_id': self.location_id
+            'locationId': self.location_id
         }
         return beers_data
