@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 from app import db
-from sqlalchemy import ForeignKey
 
 
 class LocationView(db.Model):
     __tablename__ = 'v_locations'
     __table_args__ = {'info': dict(is_view=True)}
-
 
     id = db.Column(db.Integer, db.Identity(start=1), primary_key=True)
     name = db.Column(db.String)

@@ -16,29 +16,28 @@ class DataSeed:
             $ flask seed
         """
         country = Location(name='Ecuador',
-                observation=None,
-                status='Activo')
+                           observation=None,
+                           status='Activo')
 
         province1 = Location(name='Imbabura',
-                observation=None,
-                status='Activo',
-                parent=country)
+                             observation=None,
+                             status='Activo',
+                             parent=country)
 
         city1 = Location(name='Ibarra',
-                observation=None,
-                status='Activo',
-                parent=province1)
-        
+                         observation=None,
+                         status='Activo',
+                         parent=province1)
+
         province2 = Location(name='Pichincha',
-                observation=None,
-                status='Activo',
-                parent=country)
+                             observation=None,
+                             status='Activo',
+                             parent=country)
 
         city2 = Location(name='Quito',
-                observation=None,
-                status='Activo',
-                parent=province2)
-
+                         observation=None,
+                         status='Activo',
+                         parent=province2)
 
         db.session.add(country)
         db.session.commit()

@@ -6,7 +6,6 @@ from sqlalchemy import ForeignKey
 class Location(db.Model):
     __tablename__ = 'locations'
 
-
     id = db.Column(db.Integer, db.Identity(start=1), primary_key=True)
     name = db.Column(db.String, nullable=False)
     observation = db.Column(db.String)

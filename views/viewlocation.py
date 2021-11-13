@@ -2,6 +2,7 @@
 from app import db
 from sqlalchemy import text
 
+
 class ViewLocation:
 
     @staticmethod

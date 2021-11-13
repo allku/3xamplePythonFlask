@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from app import db
 from sqlalchemy import ForeignKey
+from models.locationview import LocationView
 
 
 class Beer(db.Model):
@@ -42,12 +43,15 @@ class Beer(db.Model):
             i_data['name'] = i.name
             ingredients_data.append(i_data)
 
+        location_beer = LocationView.query.filter_by(id=self.location_id).first()
         beers_data = {
             'id': self.id,
             'name': self.name,
             'brand': self.brand,
-            'origin': self.origin,
+            'origin': location_beer.name,
+            'location': location_beer.location,
             'dateReleased': self.date_released.strftime('%Y-%m-%dT%H:%M:%S'),
-            'ingredients': ingredients_data
+            'ingredients': ingredients_data,
+            'location_id': self.location_id
         }
         return beers_data

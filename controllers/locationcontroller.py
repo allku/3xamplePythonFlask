@@ -21,5 +21,3 @@ class LocationControllerById(Resource):
             return jsonify(location.serialize())
         except Exception as e:
             return str(e), 501
-
-
