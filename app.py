@@ -3,6 +3,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Api
+from flask.cli import AppGroup
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -46,14 +48,24 @@ def create_data():
 
 from views.viewlocation import ViewLocation
 
-
-@app.cli.command("view")
+view_cli = AppGroup('view')
+@view_cli.command("create")
 def create_view():
     """
         Create view:
-        $ flask view
+        $ flask view create
     """
     ViewLocation.create()
+
+@view_cli.command("drop")
+def drop_view():
+    """
+        Drop view:
+        $ flask view drop
+    """
+    ViewLocation.drop()
+
+app.cli.add_command(view_cli)
 
 
 @app.errorhandler(404)
