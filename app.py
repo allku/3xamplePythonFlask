@@ -39,6 +39,18 @@ def create_data():
     DataSeed.create()
 
 
+from views.viewlocation import ViewLocation
+
+
+@app.cli.command("view")
+def create_view():
+    """
+        Create view:
+        $ flask view
+    """
+    ViewLocation.create()
+
+
 @app.errorhandler(404)
 def invalid_route(e):
     """

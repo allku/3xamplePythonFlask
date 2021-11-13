@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from models.beer import Beer
 from models.ingredient import Ingredient
 from models.location import Location
@@ -18,15 +19,25 @@ class DataSeed:
                 observation=None,
                 status='Activo')
 
-        province = Location(name='Imbabura',
+        province1 = Location(name='Imbabura',
                 observation=None,
                 status='Activo',
                 parent=country)
 
-        city = Location(name='Ibarra',
+        city1 = Location(name='Ibarra',
                 observation=None,
                 status='Activo',
-                parent=province)
+                parent=province1)
+        
+        province2 = Location(name='Pichincha',
+                observation=None,
+                status='Activo',
+                parent=country)
+
+        city2 = Location(name='Quito',
+                observation=None,
+                status='Activo',
+                parent=province2)
 
 
         db.session.add(country)
@@ -37,7 +48,7 @@ class DataSeed:
                      brand='Cerveceria Nacional',
                      origin='Ecuador',
                      date_released=now,
-                     location_id=city.id)
+                     location_id=city1.id)
 
         beer1.ingredients.append(Ingredient(name='Malta'))
         beer1.ingredients.append(Ingredient('Agua'))
