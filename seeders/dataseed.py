@@ -15,31 +15,31 @@ class DataSeed:
             Use the command in terminal:
             $ flask seed
         """
-        country = Location(name='Ecuador',
-                           observation=None,
-                           status='Activo')
+        planet = Location(name='Tierra',
+                          observation=None,
+                          status='Activo')
 
-        province1 = Location(name='Imbabura',
-                             observation=None,
-                             status='Activo',
-                             parent=country)
+        continent1 = Location(name='America',
+                              observation=None,
+                              status='Activo',
+                              parent=planet)
 
-        city1 = Location(name='Ibarra',
-                         observation=None,
-                         status='Activo',
-                         parent=province1)
+        country1 = Location(name='Ecuador',
+                            observation=None,
+                            status='Activo',
+                            parent=continent1)
 
-        province2 = Location(name='Pichincha',
-                             observation=None,
-                             status='Activo',
-                             parent=country)
+        continent2 = Location(name='Europa',
+                              observation=None,
+                              status='Activo',
+                              parent=planet)
 
-        city2 = Location(name='Quito',
-                         observation=None,
-                         status='Activo',
-                         parent=province2)
+        country2 = Location(name='Alemania',
+                            observation=None,
+                            status='Activo',
+                            parent=continent2)
 
-        db.session.add(country)
+        db.session.add(planet)
         db.session.commit()
 
         now = date.today()
@@ -47,7 +47,7 @@ class DataSeed:
                      brand='Cerveceria Nacional',
                      origin='Ecuador',
                      date_released=now,
-                     location_id=city1.id)
+                     location_id=country1.id)
 
         beer1.ingredients.append(Ingredient(name='Malta'))
         beer1.ingredients.append(Ingredient('Agua'))
