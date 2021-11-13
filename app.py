@@ -12,20 +12,25 @@ db = SQLAlchemy(app)
 from models.beer import *
 from models.ingredient import *
 from models.location import *
+from models.locationview import *
 
 migrate = Migrate(app, db)
 
 from controllers.index import *
 from controllers.beercontroller import *
+from controllers.locationcontroller import *
 
 api.add_resource(Index, '/')
 # GET all beers
 api.add_resource(BeersController, '/example/rest/v1/beers')
-# # GET, PUT and DELETE one beer by id
+# GET, PUT and DELETE one beer by id
 api.add_resource(BeerControllerById, '/example/rest/v1/beer/<int:id>')
-# # POST beer (Create beer or new beer)
+# POST beer (Create beer or new beer)
 api.add_resource(BeerController, '/example/rest/v1/beer')
 
+
+# GET one location by id
+api.add_resource(LocationControllerById, '/example/rest/v1/location/<int:id>')
 
 from seeders.dataseed import DataSeed
 

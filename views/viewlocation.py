@@ -15,6 +15,7 @@ class ViewLocation:
         ddl_view = text(file.read())
         print(ddl_view)
 
+        db.session.execute('drop table v_locations')
         db.session.execute(ddl_view)
         db.session.commit()
         print('Create view v_locations')
