@@ -92,6 +92,7 @@ flask view create
 flask seed
 ```
 ### Run
+Before, create folder "logs"
 ```
 flask run
 ```

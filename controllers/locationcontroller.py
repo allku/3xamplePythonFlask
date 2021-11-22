@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import logging
+logger = logging.getLogger(__name__)
 from flask_restful import Resource
 from flask import jsonify, request
 from app import db
@@ -20,4 +22,5 @@ class LocationControllerById(Resource):
 
             return jsonify(location.serialize())
         except Exception as e:
+            logger.error(e)
             return str(e), 501

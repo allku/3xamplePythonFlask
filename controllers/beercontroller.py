@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import logging
+logger = logging.getLogger(__name__)
 from flask_restful import Resource
 from flask import jsonify, request
 from app import db
@@ -18,6 +20,7 @@ class BeersController(Resource):
             print(beers)
             return jsonify([b.serialize() for b in beers])
         except Exception as e:
+            logger.error(e)
             return str(e), 501
 
 
@@ -55,6 +58,7 @@ class BeerController(Resource):
             return jsonify(beer_one.serialize())
 
         except Exception as e:
+            logger.error(e)
             return str(e), 501
 
 
@@ -73,6 +77,7 @@ class BeerControllerById(Resource):
 
             return jsonify(beer.serialize())
         except Exception as e:
+            logger.error(e)
             return str(e), 501
 
     def put(self, id):
@@ -103,6 +108,7 @@ class BeerControllerById(Resource):
 
             return jsonify(beer.serialize())
         except Exception as e:
+            logger.error(e)
             return str(e), 501
 
     def delete(self, id):
@@ -125,4 +131,5 @@ class BeerControllerById(Resource):
                 'name': beer.name
             }
         except Exception as e:
+            logger.error(e)
             return str(e), 501

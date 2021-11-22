@@ -79,6 +79,7 @@ def invalid_route(e):
     """
         Define custom 404 in json when not exist route
     """
+    app.logger.error('Route not found')
     return jsonify({
         'errorCode': 404,
         'message': 'Route not found'
@@ -86,7 +87,9 @@ def invalid_route(e):
 
 
 # Logger
-filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'server.log')
+filename = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                        'logs',
+                        'server.log')
 logging.basicConfig(level=logging.DEBUG,
                     format="[%(levelname)s] %(asctime)s %(message)s",
                     handlers=[
