@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
+import logging
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Api
@@ -10,6 +11,9 @@ app = Flask(__name__)
 api = Api(app)
 app.config.from_pyfile('config.cfg')
 db = SQLAlchemy(app)
+
+logging.basicConfig(filename='demo.log', level=logging.DEBUG)
+app.logger.info('Start Flask Server')
 
 from models.beer import *
 from models.ingredient import *
