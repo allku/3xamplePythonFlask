@@ -82,7 +82,7 @@ def invalid_route(e):
     return jsonify({
         'errorCode': 404,
         'message': 'Route not found'
-    })
+    }), 404
 
 
 # Logger
