@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import os
+import sys
+
 from flask import Flask
 import logging
 from flask_sqlalchemy import SQLAlchemy
@@ -6,14 +9,10 @@ from flask_migrate import Migrate
 from flask_restful import Api
 from flask.cli import AppGroup
 
-
 app = Flask(__name__)
 api = Api(app)
 app.config.from_pyfile('config.cfg')
 db = SQLAlchemy(app)
-
-logging.basicConfig(filename='demo.log', level=logging.DEBUG)
-app.logger.info('Start Flask Server')
 
 from models.beer import *
 from models.ingredient import *
@@ -34,7 +33,6 @@ api.add_resource(BeerControllerById, '/example/rest/v1/beer/<int:id>')
 # POST beer (Create beer or new beer)
 api.add_resource(BeerController, '/example/rest/v1/beer')
 
-
 # GET one location by id
 api.add_resource(LocationControllerById, '/example/rest/v1/location/<int:id>')
 
@@ -53,6 +51,8 @@ def create_data():
 from views.viewlocation import ViewLocation
 
 view_cli = AppGroup('view')
+
+
 @view_cli.command("create")
 def create_view():
     """
@@ -61,6 +61,7 @@ def create_view():
     """
     ViewLocation.create()
 
+
 @view_cli.command("drop")
 def drop_view():
     """
@@ -68,6 +69,7 @@ def drop_view():
         $ flask view drop
     """
     ViewLocation.drop()
+
 
 app.cli.add_command(view_cli)
 
@@ -81,3 +83,12 @@ def invalid_route(e):
         'errorCode': 404,
         'message': 'Route not found'
     })
+
+
+# Logger
+filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'server.log')
+logging.basicConfig(level=logging.DEBUG, handlers=[
+    logging.FileHandler(filename),
+    logging.StreamHandler(sys.stdout)
+])
+app.logger.info('Start Flask Server')
