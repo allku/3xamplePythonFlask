@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import logging
 
 from flask import Flask
-import logging
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_restful import Api
