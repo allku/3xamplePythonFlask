@@ -87,8 +87,10 @@ def invalid_route(e):
 
 # Logger
 filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'server.log')
-logging.basicConfig(level=logging.DEBUG, handlers=[
-    logging.FileHandler(filename),
-    logging.StreamHandler(sys.stdout)
-])
+logging.basicConfig(level=logging.DEBUG,
+                    format="[%(levelname)s] %(asctime)s %(message)s",
+                    handlers=[
+                        logging.FileHandler(filename),
+                        logging.StreamHandler(sys.stdout)
+                    ])
 app.logger.info('Start Flask Server')
