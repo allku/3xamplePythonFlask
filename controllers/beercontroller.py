@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+
 logger = logging.getLogger(__name__)
 from flask_restful import Resource
 from flask import jsonify, request
