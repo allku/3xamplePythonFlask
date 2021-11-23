@@ -81,7 +81,6 @@ def invalid_route(e):
     """
     app.logger.error('Route not found')
     return jsonify({
-        'errorCode': 404,
         'message': 'Route not found'
     }), 404
 

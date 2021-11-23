@@ -21,7 +21,7 @@ class BeersController(Resource):
             return jsonify([b.serialize() for b in beers])
         except Exception as e:
             logger.error(e)
-            return str(e), 501
+            return {'message': str(e)}, 501
 
 
 class BeerController(Resource):
@@ -36,9 +36,7 @@ class BeerController(Resource):
             errors = beer_schema.validate(data)
             print(errors)
             if errors:
-                return {
-                           'message': str(errors)
-                       }, 500
+                return {'message': str(errors)}, 500
 
             name = data['name']
             brand = data['brand']
@@ -59,7 +57,7 @@ class BeerController(Resource):
 
         except Exception as e:
             logger.error(e)
-            return str(e), 501
+            return {'message': str(e)}, 501
 
 
 class BeerControllerById(Resource):
@@ -73,12 +71,12 @@ class BeerControllerById(Resource):
             beer = Beer.query.filter_by(id=id).first()
 
             if beer is None:
-                return None, 404
+                return {'message': 'Beer not found'}, 404
 
             return jsonify(beer.serialize())
         except Exception as e:
             logger.error(e)
-            return str(e), 501
+            return {'message': str(e)}, 501
 
     def put(self, id):
         """
@@ -90,7 +88,7 @@ class BeerControllerById(Resource):
             beer = Beer.query.filter_by(id=id).first()
 
             if beer is None:
-                return None, 404
+                return {'message': 'Beer not found'}, 404
 
             data = request.get_json()
             # Validate is missing
@@ -109,7 +107,7 @@ class BeerControllerById(Resource):
             return jsonify(beer.serialize())
         except Exception as e:
             logger.error(e)
-            return str(e), 501
+            return {'message': str(e)}, 501
 
     def delete(self, id):
         """
@@ -121,7 +119,7 @@ class BeerControllerById(Resource):
             beer = Beer.query.filter_by(id=id).first()
 
             if beer is None:
-                return None, 404
+                return {'message': 'Beer not found'}, 404
 
             db.session.delete(beer)
             db.session.commit()
@@ -132,4 +130,4 @@ class BeerControllerById(Resource):
             }
         except Exception as e:
             logger.error(e)
-            return str(e), 501
+            return {'message': str(e)}, 501

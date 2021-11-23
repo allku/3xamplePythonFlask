@@ -18,9 +18,10 @@ class LocationControllerById(Resource):
             location = LocationView.query.filter_by(id=id).first()
 
             if location is None:
+                return {'message': 'Location not found'}, 404
                 return None, 404
 
             return jsonify(location.serialize())
         except Exception as e:
             logger.error(e)
-            return str(e), 501
+            return {'message': str(e)}, 501
