@@ -14,6 +14,7 @@ api = Api(app)
 app.config.from_pyfile('config.cfg')
 db = SQLAlchemy(app)
 
+# Models
 from models.beer import *
 from models.ingredient import *
 from models.location import *
@@ -21,21 +22,12 @@ from models.locationview import *
 
 migrate = Migrate(app, db)
 
-from controllers.index import *
-from controllers.beercontroller import *
-from controllers.locationcontroller import *
+# Routes
+from router import define_routers
 
-api.add_resource(Index, '/')
-# GET all beers
-api.add_resource(BeersController, '/example/rest/v1/beers')
-# GET, PUT and DELETE one beer by id
-api.add_resource(BeerControllerById, '/example/rest/v1/beer/<int:id>')
-# POST beer (Create beer or new beer)
-api.add_resource(BeerController, '/example/rest/v1/beer')
+define_routers()
 
-# GET one location by id
-api.add_resource(LocationControllerById, '/example/rest/v1/location/<int:id>')
-
+# Seeders
 from seeders.dataseed import DataSeed
 
 
@@ -72,18 +64,6 @@ def drop_view():
 
 
 app.cli.add_command(view_cli)
-
-
-@app.errorhandler(404)
-def invalid_route(e):
-    """
-        Define custom 404 in json when not exist route
-    """
-    app.logger.error('Route not found')
-    return jsonify({
-        'message': 'Route not found'
-    }), 404
-
 
 # Logger
 filename = os.path.join(os.path.dirname(os.path.realpath(__file__)),
