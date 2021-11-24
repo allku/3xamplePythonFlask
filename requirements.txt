@@ -4,6 +4,10 @@ Flask-Migrate
 Flask-SQLAlchemy
 Flask-RESTful
 marshmallow
+pytest
 
 # Postgres database
 psycopg2-binary
+
+# Utility
+httpie
