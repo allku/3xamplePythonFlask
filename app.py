@@ -23,7 +23,7 @@ from models.locationview import *
 migrate = Migrate(app, db)
 
 # Routes
-from router import define_routers
+from routes.router import define_routers
 
 define_routers()
 
