@@ -100,7 +100,14 @@ flask run
 ```
 flask run --port=5001
 ```
-
+### Test
+```
+pytest
+```
+or
+```
+pytest -s
+```
 ### Drop view
 ```
 flask view drop

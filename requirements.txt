@@ -5,9 +5,11 @@ Flask-SQLAlchemy
 Flask-RESTful
 marshmallow
 pytest
+pytest-order
 
 # Postgres database
 psycopg2-binary
 
 # Utility
 httpie
+colorama
