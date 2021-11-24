@@ -2,7 +2,6 @@
 import json
 
 from app import app
-import colorama
 from colorama import Fore
 
 

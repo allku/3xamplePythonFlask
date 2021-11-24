@@ -2,7 +2,6 @@
 import json
 import pytest
 from app import app
-import colorama
 from colorama import Fore
 
 
@@ -15,11 +14,11 @@ class Values:
 def test_post_beer():
     url = '/example/rest/v1/beer'
     response = app.test_client().post(url,
-            json={'name': 'Venenoza',
-                  'brand': 'Mi cervezeria clandestina',
-                  'dateReleased': '1803-10-11T13:44:02',
-                  'locationId': 4,
-                  'ingredients': [{'name': 'Agua contaminada'}]})
+                                      json={'name': 'Venenoza',
+                                            'brand': 'Mi cervezeria clandestina',
+                                            'dateReleased': '1803-10-11T13:44:02',
+                                            'locationId': 4,
+                                            'ingredients': [{'name': 'Agua contaminada'}]})
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
     print(Fore.BLUE + 'Json POST result {0} '.format(res))
@@ -32,10 +31,10 @@ def test_post_beer():
 def test_put_beer():
     url = '/example/rest/v1/beer/{0}'.format(Values.id)
     response = app.test_client().put(url,
-            json={'name': 'Venenoza 100%',
-                  'brand': 'Mi cervezeria clausurada',
-                  'dateReleased': '1903-10-11T13:44:02',
-                  'locationId': 5})
+                                     json={'name': 'Venenoza 100%',
+                                           'brand': 'Mi cervezeria clausurada',
+                                           'dateReleased': '1903-10-11T13:44:02',
+                                           'locationId': 5})
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
     print(Fore.BLUE + 'Json PUT result {0} '.format(res))
@@ -56,7 +55,7 @@ def test_get_beer_by_id():
     assert response.status_code == 200
 
 
-#@pytest.mark.skip(reason=None)
+# @pytest.mark.skip(reason=None)
 @pytest.mark.order(3)
 def test_get_all_beers():
     url = '/example/rest/v1/beers'
@@ -64,10 +63,10 @@ def test_get_all_beers():
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
     print(Fore.BLUE + 'Json GET result {0} '.format(res))
-    #assert type(res[0]) is dict
-    #assert type(res[1]) is dict
-    #assert res[0]['name'] == 'Calenturienta'
-    #assert res[1]['name'] == 'Krombacher'
+    # assert type(res[0]) is dict
+    # assert type(res[1]) is dict
+    # assert res[0]['name'] == 'Calenturienta'
+    # assert res[1]['name'] == 'Krombacher'
     assert response.status_code == 200
     assert type(res) is list
 
