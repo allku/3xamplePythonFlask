@@ -2,7 +2,10 @@
 import json
 import pytest
 from app import app
-from colorama import Fore
+from colorama import Fore, init
+
+
+init()
 
 
 # Value to share between test functions
@@ -21,7 +24,7 @@ def test_post_beer():
                                             'ingredients': [{'name': 'Agua contaminada'}]})
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
-    print(Fore.BLUE + 'Json POST result {0} '.format(res))
+    print(Fore.YELLOW + 'Json POST result {0} '.format(res))
     Values.id = res['id']
     assert res['name'] == 'Venenoza'
     assert response.status_code == 200
@@ -37,7 +40,7 @@ def test_put_beer():
                                            'locationId': 5})
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
-    print(Fore.BLUE + 'Json PUT result {0} '.format(res))
+    print(Fore.YELLOW + 'Json PUT result {0} '.format(res))
     assert res['name'] == 'Venenoza 100%'
     assert response.status_code == 200
 
@@ -48,7 +51,7 @@ def test_get_beer_by_id():
     response = app.test_client().get(url)
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
-    print(Fore.BLUE + 'Json GET result {0} '.format(res))
+    print(Fore.YELLOW + 'Json GET result {0} '.format(res))
     assert res['id'] == Values.id
     assert res['name'] == 'Venenoza'
     assert res['brand'] == 'Mi cervezeria clandestina'
@@ -62,7 +65,7 @@ def test_get_all_beers():
     response = app.test_client().get(url)
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
-    print(Fore.BLUE + 'Json GET result {0} '.format(res))
+    print(Fore.YELLOW + 'Json GET result {0} '.format(res))
     # assert type(res[0]) is dict
     # assert type(res[1]) is dict
     # assert res[0]['name'] == 'Calenturienta'
@@ -77,6 +80,6 @@ def test_delete_beer():
     response = app.test_client().delete(url)
     res = json.loads(response.data.decode('utf-8'))
     print(Fore.GREEN + 'URL {0}'.format(url))
-    print(Fore.BLUE + 'Json DELETE result {0} '.format(res))
+    print(Fore.YELLOW + 'Json DELETE result {0} '.format(res))
     assert res['name'] == 'Venenoza 100%'
     assert response.status_code == 200
